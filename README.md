@@ -63,13 +63,13 @@ Second Requirement:
 The process_image function takes advantage of the functions defined previously in the lessons. First, it will take an image and  perform a perspective transformation to change the view from the Rover Camera to a top down view. After that, it will use filters to identify the navigable terrain, obstacles and the rocks. Once that is done, the function will gather the coordinates, change them to rover-centric coordinates, which we will ultimately use to plot the terrain, obstacles, and the rocks in the world view.
 The output file can be found in output/test_mapping.mp4 from the root directory.
 
-## Autonomous Navigation and Mapping
+### Autonomous Navigation and Mapping
 First Requirement:  
 The perception_step() function takes advantage of the functions defined previously in the lessons. First, it will take an image and  perform a perspective transformation to change the view from the Rover Camera to a top down view. After that, it will use filters to identify the navigable terrain, obstacles and the rocks. Once that is done, the function will gather the coordinates, change them to rover-centric coordinates, which we will ultimately use to plot the terrain, obstacles, and the rocks in the world view. To determine the best angle to move, this function uses polar coordinates based on the navigable terrain of the filtered image. I have also adjusted threshold values of the navigable terrain in color_thresh because the previous value of 160,160,160 would cut off some shaded terrain.
 In terms of the the decision_step, the function is unchanged from the original as it provides the basic movement and its functionality is documented in the code.  
 
-Second Requirement:
-To further improve this project, the fidelity hits 65%, which is really low. I would have to consider which images are valid based on the roll and and pitch angles, and try to mitigate it. I could do this through the perception step by setting thresholds for the roll/pitch or I could try to make take less sharp turns or reduce the brake speed through the decision step. This will improve the map fidelity
-Another thing that I would improve is the how it gets stuck in some locations. To get out of this situation, if the velocity is 0 for a period of time, I may consider changing the angle by 15 degrees or so until the velocity increases.
+Second Requirement:  
+The map fidelity averages around 65%, which is something that I would like to improve. I would have to consider which images are valid based on the roll and and pitch angles, and try to mitigate it. I could do this through the perception step by setting thresholds for the roll/pitch or through the decision step by taking less sharp turns and reducing the brake speed.
+Another thing that I would fix is the rover getting stuck in some locations. To get out of this situation, if the velocity is 0 for a period of time, I will change the angle by 15 degrees or so until the velocity increases, which would indicate that it is not stuck anymore.
 
 Resolution that the simulator is run at 1280 x 800. FPS is 15-18
